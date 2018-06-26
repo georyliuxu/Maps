@@ -1,0 +1,46 @@
+<!doctype html>
+<html class="no-js">
+  <head>
+    <meta charset="utf-8">
+    <title>MapBox Example</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <script type="text/javascript" src="https://pubnub.github.io/eon/v/eon/1.0.0/eon.js"></script>
+    <link type="text/css" rel="stylesheet" href="https://pubnub.github.io/eon/v/eon/1.0.0/eon.css"/>
+    <script src="https://cdn.pubnub.com/pubnub-3.7.1.min.js"></script>
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+        <script src='https://api.tiles.mapbox.com/mapbox.js/v2.1.4/mapbox.js'></script>
+<div id='map' style="height:  500px;"></div>
+<script type="text/javascript">
+
+var channel = 'pubnub-mapbox';
+
+
+
+var pn = new PubNub({
+  publishKey: 'demo',
+  subscribeKey: 'demo'
+});
+
+var map = eon.map({
+  pubnub: pn,
+  id: 'map',
+  mbToken: 'pk.eyJ1IjoibXJ0emhja3IiLCJhIjoiY2lubjBseDQ0MDBhdHc3a2xkY3o1dGhleiJ9.drI4izTLE3BM-nac7L-zJA',
+  mbId: 'mapbox.satellite',
+  channels: [channel],
+  message: function (data) {
+  // map.setView(data[0].latlng, 17);
+  console.log(data[0].latlng);
+  console.log(data[0].temp);
+    //console.log(data[1].temp);
+ }
+
+
+//  connect: connect
+});
+
+
+
+</script>
+  </body>
+</html>
