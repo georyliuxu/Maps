@@ -47,7 +47,7 @@ void setup()
 
 void flash(int ledPin)
 {
-  /* Flash LED three times. */
+  
   for (int i = 0; i < 3; i++) {
     digitalWrite(ledPin, HIGH);
     delay(100);
